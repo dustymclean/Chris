@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Strev Speaks | About Chris Streveler | Master Speaker Architecture</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            /* SELECTION & BRAND IDENTITY */
+            .selection-blue { @apply selection:bg-blue-600 selection:text-white; }
+            
+            /* TAILWIND GLOW HARDWARE */
+            .glow-blue {
+                text-shadow: 0 0 12px rgba(37, 99, 235, 0.4), 0 0 25px rgba(37, 99, 235, 0.15);
+            }
+            .glow-border {
+                box-shadow: 0 0 40px -10px rgba(37, 99, 235, 0.35);
+            }
+            .one-sheet-shadow { 
+                box-shadow: 0 0 60px -15px rgba(37, 99, 235, 0.35); 
+            }
+            
+            /* RECALIBRATED ASYMMETRIC LEAD: Refined Passing Buffer */
+            .audit-container {
+                @apply w-full max-w-[1920px] mx-auto relative;
+                padding-left: clamp(1.5rem, 8vw, 12rem);
+                padding-right: clamp(1.25rem, 5vw, 7rem);
+            }
+
+            /* FULL-SCREEN BREAKOUT HARDWARE */
+            .audit-breakout {
+                width: 100vw;
+                position: relative;
+                left: calc(-50vw + 50%);
+                right: calc(-50vw + 50%);
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            /* MODULAR VERTICAL SPACING (REDUCED FOR ZOOM) */
+            .section-mod {
+                padding-top: clamp(3rem, 8vw, 6rem);
+                padding-bottom: clamp(3rem, 8vw, 6rem);
+            }
+
+            /* CINEMATIC TYPOGRAPHY: 15% Reduction applied to Max-Caps */
+            .h-cinematic {
+                font-size: clamp(32px, 10vw, 140px);
+            }
+        }
+
+        /* 12.5% GLOBAL ZOOM-OUT REDUCTION (12px -> 10.5px) */
+        html, body { 
+            font-size: 10.5px !important; 
+            margin: 0; 
+            padding: 0; 
+            overflow-x: hidden; 
+            width: 100%; 
+            min-width: 100%;
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+        * { box-sizing: border-box; }
+
+        /* TIMELINE COMPONENT HARDWARE */
+        .timeline-line { position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: #e2e8f0; z-index: 0; }
+        .timeline-marker { position: relative; z-index: 10; padding-bottom: 3.5rem; }
+        .timeline-dot { 
+            position: absolute; 
+            left: -25px; 
+            width: 1rem; 
+            height: 1rem; 
+            border-radius: 9999px; 
+            background: #2563eb; 
+            border: 4px solid white; 
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.35); 
+        }
+
+        /* BLOCK INDEPENDENCE: Independent Card Architecture */
+        .audit-card {
+            @apply bg-white border border-slate-200 rounded-[2.5rem] p-8 md:p-10 shadow-2xl;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .audit-card:hover {
+            @apply -translate-y-2 border-blue-600 shadow-blue-600/10;
+        }
+
+        /* PRINT ENGINE OVERRIDES */
+        @media print {
+            .landing-page-view, .no-print { display: none !important; }
+            .one-sheet-view { display: block !important; background: white !important; padding: 0 !important; }
+            .one-sheet-view main { border: none !important; box-shadow: none !important; border-radius: 0 !important; }
+            .one-sheet-view .bg-blue-600 { background: #2563eb !important; -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 font-sans selection-blue antialiased w-full">
+
+    <div id="landingPage" class="landing-page-view w-full overflow-x-hidden">
+        
+        <section class="relative w-full min-h-screen flex flex-col justify-center border-b border-slate-200 audit-breakout bg-white overflow-hidden">
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-blue-600/5 blur-[120px] rounded-full -mr-32 -mt-32 pointer-events-none"></div>
+            
+            <div class="audit-container py-16 md:py-20">
+                <div class="inline-flex items-center space-x-3 bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-[9px] md:text-xs font-black uppercase tracking-widest mb-10 border border-blue-100 relative z-10">
+                    <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                    <span>Engineering the Adversity Framework</span>
+                </div>
+                
+                <h1 class="h-cinematic font-black leading-[0.85] tracking-tighter mb-10 italic uppercase text-slate-950 relative z-10">
+                    THE MAN IS A <br>
+                    <span class="text-blue-600 underline decoration-slate-200 decoration-[8px] md:decoration-[18px] underline-offset-4 md:underline-offset-[18px]">DIAGNOSTIC</span> TOOL.
+                </h1>
+                
+                <p class="text-lg md:text-3xl text-slate-500 max-w-4xl leading-tight font-medium mb-12 px-2 relative z-10">
+                    Chris Streveler executed a <strong>high-performance pivot strategy</strong> to navigate sports' most volatile environments. Now, he’s deploying those systems for corporate leadership.
+                </p>
+                
+                <div class="flex relative z-10">
+                    <button onclick="toggleSheet(true)" class="inline-flex items-center justify-center space-x-5 bg-blue-600 border-2 border-blue-600 px-10 py-5 md:px-14 md:py-7 rounded-full font-black transition-all duration-300 text-white hover:bg-slate-950 shadow-2xl active:scale-95 group">
+                        <i data-lucide="file-text" class="w-6 h-6 group-hover:rotate-12 transition-transform"></i>
+                        <span class="italic text-lg md:text-xl uppercase tracking-tighter">OPEN PRESS MASTER KIT</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full section-mod border-b border-slate-200 audit-breakout bg-white">
+            <div class="audit-container grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+                
+                <div class="space-y-16 md:space-y-20">
+                    <div class="block-unit">
+                        <h2 class="text-4xl md:text-7xl font-black italic uppercase text-slate-950 tracking-tighter leading-none mb-6 md:mb-8">The Prototype</h2>
+                        <p class="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
+                            Chris didn't follow a standard career path; he executed a <strong>high-performance pivot</strong>. When the system at Minnesota tried to force a hardware change to wide receiver, Chris initiated a <strong>system transfer</strong> to South Dakota. He didn't just play—he <strong>maxed out the hardware</strong>.
+                        </p>
+                    </div>
+
+                    <div class="block-unit">
+                        <h2 class="text-4xl md:text-7xl font-black italic uppercase text-slate-950 tracking-tighter leading-none mb-6 md:mb-8">The Stress Test</h2>
+                        <p class="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
+                            His <strong>build quality</strong> was stress-tested in Winnipeg. Leading the Blue Bombers to a Grey Cup Championship on a <strong>broken foot</strong> wasn't just "tough"—it was <strong>rugged construction</strong> in a high-stakes environment. In the NFL, he became the redundancy plan that worked.
+                        </p>
+                    </div>
+
+                    <div class="block-unit">
+                        <h2 class="text-4xl md:text-7xl font-black italic uppercase text-slate-950 tracking-tighter leading-none mb-6 md:mb-8">2026 Assessment</h2>
+                        <p class="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
+                            Today, Chris is a <strong>diagnostic tool</strong> for elite organizations. As the architect of the <strong>Adversity Framework</strong>, he maps <strong>tactical resilience</strong> onto corporate infrastructure. He’s the <strong>functional component</strong> for teams that execute when plans fail.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:sticky lg:top-16">
+                    <div class="audit-card bg-slate-50 border-slate-200 mb-10 md:mb-12">
+                        <h4 class="text-[10px] md:text-[11px] text-blue-600 font-black uppercase tracking-[0.5em] italic mb-8 md:mb-10 leading-none">Technical Timeline Diagnostics</h4>
+                        
+                        <div class="relative pl-10 md:pl-12">
+                            <div class="timeline-line"></div>
+                            
+                            <div class="timeline-marker">
+                                <div class="timeline-dot"></div>
+                                <span class="text-[10px] md:text-[11px] text-blue-600 font-black uppercase tracking-widest block mb-2 leading-none">2016: System Transfer</span>
+                                <p class="text-2xl md:text-3xl font-black italic uppercase text-slate-950 leading-none mb-4 tracking-tighter">Initial QB Architecture</p>
+                                <p class="text-slate-500 text-sm md:text-base font-medium leading-relaxed">Pivot from Minnesota to USD; verified hardware output as MVFC POY.</p>
+                            </div>
+
+                            <div class="timeline-marker">
+                                <div class="timeline-dot" style="background: #cbd5e1; box-shadow: none;"></div>
+                                <span class="text-[10px] md:text-[11px] text-slate-400 font-black uppercase tracking-widest block mb-2 leading-none">2019: Championship Execution</span>
+                                <p class="text-2xl md:text-3xl font-black italic uppercase text-slate-950 leading-none mb-4 tracking-tighter">Grey Cup Title</p>
+                                <p class="text-slate-500 text-sm md:text-base font-medium leading-relaxed">Winnipeg Blue Bombers; verified durability testing on broken foot.</p>
+                            </div>
+
+                            <div class="timeline-marker" style="padding-bottom: 0;">
+                                <div class="timeline-dot"></div>
+                                <span class="text-[10px] md:text-[11px] text-blue-600 font-black uppercase tracking-widest block mb-2 leading-none">2026: Global System Release</span>
+                                <p class="text-2xl md:text-3xl font-black italic uppercase text-slate-950 leading-none mb-4 tracking-tighter">Adversity Framework</p>
+                                <p class="text-slate-500 text-sm md:text-base font-medium leading-relaxed">Transition to master keynote circuit; Mentorship systems active.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-600 p-10 md:p-14 rounded-[3rem] text-white shadow-2xl relative overflow-hidden group">
+                        <div class="absolute -top-16 -right-16 w-80 h-80 bg-white/10 rounded-full blur-[120px] group-hover:bg-white/20 transition-all duration-1000"></div>
+                        <p class="text-3xl md:text-6xl font-black italic leading-[1] uppercase tracking-tighter relative z-10">
+                            "I care about who you are when the <span class="underline decoration-white decoration-4 md:decoration-6 underline-offset-4 md:underline-offset-8">system breaks</span>."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full section-mod audit-breakout bg-slate-50 border-b border-slate-200">
+            <div class="audit-container">
+                <h2 class="text-5xl md:text-[100px] font-black italic uppercase tracking-tighter text-slate-950 mb-16 md:mb-24 leading-none text-left md:text-center">THE ADVERSITY <span class="text-blue-600">BLUEPRINT</span></h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+                    <div class="audit-card">
+                        <h4 class="text-blue-600 font-black uppercase tracking-widest text-[10px] md:text-[11px] italic mb-6 border-l-4 border-blue-600 pl-6 leading-none">01. Rigidity</h4>
+                        <h3 class="text-2xl md:text-3xl font-black uppercase italic text-slate-950 mb-6 tracking-tight leading-none">Diagnostic Culture</h3>
+                        <p class="text-slate-600 text-base md:text-lg font-medium leading-relaxed">
+                            His Adversity Framework provides a diagnostic tool for your culture, built on Accountability, Rapid Pivots, and Extreme Ownership.
+                        </p>
+                    </div>
+                    <div class="audit-card">
+                        <h4 class="text-blue-600 font-black uppercase tracking-widest text-[10px] md:text-[11px] italic mb-6 border-l-4 border-blue-600 pl-6 leading-none">02. Resilience</h4>
+                        <h3 class="text-2xl md:text-3xl font-black uppercase italic text-slate-950 mb-6 tracking-tight leading-none">Tactical Consistency</h3>
+                        <p class="text-slate-600 text-base md:text-lg font-medium leading-relaxed">
+                            Functional consistency under fire. Chris teaches teams how to maintain elite execution regardless of scoreboard volatility.
+                        </p>
+                    </div>
+                    <div class="audit-card">
+                        <h4 class="text-blue-600 font-black uppercase tracking-widest text-[10px] md:text-[11px] italic mb-6 border-l-4 border-blue-600 pl-6 leading-none">03. Engagement</h4>
+                        <h3 class="text-2xl md:text-3xl font-black uppercase italic text-slate-950 mb-6 tracking-tight leading-none">Technical Discovery</h3>
+                        <p class="text-slate-600 text-base md:text-lg font-medium leading-relaxed">
+                            Expect total transparency and pre-event discovery deep-dives to ensure his talk hits your specific industry hurdles.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-20 md:mt-32 bg-white p-10 md:p-24 rounded-[3rem] md:rounded-[5rem] border border-slate-200 shadow-2xl max-w-[1400px] mx-auto glow-border">
+                    <h4 class="text-3xl md:text-8xl font-black italic uppercase mb-10 md:mb-16 text-slate-950 tracking-tighter leading-none text-left md:text-center px-4">Ready to run <br> <span class="text-blue-600">the plays?</span></h4>
+                    <div class="flex flex-col sm:flex-row gap-6 lg:gap-10 justify-start sm:justify-center">
+                        <a href="mailto:Chris.strevenger@gmail.com" class="bg-blue-600 text-white px-10 py-6 md:px-14 md:py-7 rounded-full font-black text-xl md:text-2xl uppercase tracking-widest hover:bg-slate-950 shadow-2xl active:scale-95 transition-all text-center">SECURE A DATE</a>
+                        <a href="https://strevspeaks.com" class="border-2 border-slate-200 px-10 py-6 md:px-14 md:py-7 rounded-full font-black text-xl md:text-2xl uppercase tracking-widest hover:border-blue-600 active:scale-95 transition-all text-center">BACK TO HOME</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="w-full py-16 md:py-20 text-center border-t border-slate-100 audit-breakout bg-white opacity-40">
+            <p class="text-[11px] md:text-[12px] font-black text-slate-400 uppercase tracking-[1.5em] italic m-0">Architected by Dusty McLean</p>
+        </footer>
+    </div>
+
+    <div id="oneSheet" class="one-sheet-view hidden p-4 md:p-12 bg-slate-100 w-full min-h-screen">
+        <div class="max-w-[1500px] mx-auto mb-10 flex flex-col sm:flex-row justify-between items-center gap-8 no-print">
+            <button onclick="toggleSheet(false)" class="text-blue-600 font-bold uppercase tracking-widest text-[10px] md:text-xs flex items-center hover:text-slate-950 transition-colors">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-3"></i> Back to Narrative
+            </button>
+            <button onclick="window.print()" class="bg-blue-600 text-white px-10 py-4 md:px-12 md:py-5 rounded-full font-black text-[10px] md:text-xs uppercase tracking-widest flex items-center transition-all shadow-xl hover:bg-slate-950 active:scale-95">
+                <i data-lucide="printer" class="w-5 h-5 mr-3"></i> Print Master PDF
+            </button>
+        </div>
+
+        <main class="max-w-[1500px] mx-auto bg-white border border-slate-200 rounded-[3rem] md:rounded-[5rem] overflow-hidden one-sheet-shadow">
+            <header class="p-12 md:p-24 border-b border-slate-100 bg-slate-50 relative">
+                <div class="absolute top-0 right-0 w-[500px] md:w-[700px] h-[500px] md:h-[700px] bg-blue-600/5 blur-[180px] rounded-full pointer-events-none"></div>
+                <div class="relative flex flex-col md:flex-row justify-between items-start md:items-end gap-12 text-slate-950">
+                    <div>
+                        <span class="text-blue-600 font-black uppercase tracking-[0.6em] text-[11px] md:text-[14px] italic leading-none block mb-6">2026 Official Press File</span>
+                        <h1 class="text-7xl md:text-[140px] font-black italic uppercase tracking-tighter mt-10 md:mt-12 leading-[0.8]">
+                            Chris <br> <span class="text-blue-600">Streveler</span>
+                        </h1>
+                    </div>
+                    <div class="text-left md:text-right">
+                        <p class="text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-4 italic leading-none uppercase">Primary Track</p>
+                        <p class="font-black italic uppercase text-4xl md:text-6xl tracking-tight leading-[0.85]">Pro Mindset & <br> Keynote Mentorship</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 bg-white">
+                <aside class="lg:col-span-4 p-12 md:p-24 bg-slate-50 border-r border-slate-100 space-y-24">
+                    <div>
+                        <h3 class="text-blue-600 font-black uppercase tracking-widest text-[14px] italic mb-10 border-b border-slate-200 pb-6 leading-none uppercase">Authority</h3>
+                        <ul class="space-y-10 md:space-y-12">
+                            <li class="flex items-center space-x-7 text-slate-950 leading-none group cursor-default">
+                                <i data-lucide="trophy" class="w-10 h-10 text-blue-600 shrink-0"></i>
+                                <span class="text-xl md:text-2xl font-black uppercase italic leading-none transition-all group-hover:text-blue-600">Grey Cup Champion</span>
+                            </li>
+                            <li class="flex items-center space-x-7 text-slate-950 leading-none group cursor-default">
+                                <i data-lucide="shield-check" class="w-10 h-10 text-blue-600 shrink-0"></i>
+                                <span class="text-xl md:text-2xl font-black uppercase italic leading-none transition-all group-hover:text-blue-600">NFL QB architecture</span>
+                            </li>
+                            <li class="flex items-center space-x-7 text-slate-950 leading-none group cursor-default">
+                                <i data-lucide="users" class="w-10 h-10 text-blue-600 shrink-0"></i>
+                                <span class="text-xl md:text-2xl font-black uppercase italic leading-none transition-all group-hover:text-blue-600">Executive Mentor</span>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <div class="lg:col-span-8 p-12 md:p-32 space-y-20 bg-white">
+                    <section class="modular-unit">
+                        <h2 class="text-blue-600 font-black uppercase tracking-[0.5em] text-[13px] md:text-[15px] italic mb-10 leading-none uppercase">Program Bio</h2>
+                        <h3 class="text-4xl md:text-6xl font-black italic uppercase text-slate-950 mb-10 md:mb-12 tracking-tighter leading-[0.9]">Who are you when <span class="text-blue-600 underline decoration-8 md:decoration-[14px] underline-offset-4 md:underline-offset-8">adversity</span> hits?</h3>
+                        <p class="text-slate-600 leading-relaxed font-medium text-2xl md:text-3xl">Chris Streveler built his career in the highest pressure environments in sports. From Grey Cup Champion to the NFL, he now teaches organizations how to lead decisively when everything goes wrong. As the architect of the Adversity Framework, he translates visceral sports intensity into actionable business systems.</p>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function toggleSheet(show) {
+            const landing = document.getElementById('landingPage');
+            const sheet = document.getElementById('oneSheet');
+            if (show) {
+                landing.classList.add('hidden');
+                sheet.classList.remove('hidden');
+                window.scrollTo(0,0);
+            } else {
+                landing.classList.remove('hidden');
+                sheet.classList.add('hidden');
+                window.scrollTo(0,0);
+            }
+        }
+
+        console.log("Strev Master About v10.0 Active | 12.5% Zoom-Out Deployment | Architectural field optimized.");
+    </script>
+</body>
+</html>

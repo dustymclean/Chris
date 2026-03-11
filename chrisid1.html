@@ -1,0 +1,400 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
+import { 
+  Link as LinkIcon, 
+  Instagram, 
+  Linkedin, 
+  Smartphone, 
+  MonitorPlay, 
+  Zap, 
+  Target, 
+  ChevronDown, 
+  UserCircle, 
+  PlayCircle 
+} from 'lucide-react';
+
+// --- DATA ---
+const VENTURES = [
+  {
+    id: 'cal',
+    title: 'The Master Hub',
+    subtitle: 'Central Nervous System',
+    description: 'This serves as the central nervous system for Chris’s digital presence, providing a single, streamlined routing link that replaces the need for traditional, static Linktrees. By hosting all active ventures, social media channels, and app store downloads in one place, it ensures that fans and business partners always have access to the most current information.',
+    links: [{ name: 'Cal.com Routing Link', url: 'https://cal.com/ChrisStreveler', icon: <LinkIcon size={18} /> }],
+    color: 'from-orange-500 to-red-600'
+  },
+  {
+    id: 'strevspeaks',
+    title: 'Strev Speaks',
+    subtitle: 'Keynote & Leadership',
+    description: 'Strev Speaks is the primary platform for Chris’s career as a keynote speaker and leadership consultant, focusing on his transition from a professional athlete to a business influencer. The site serves as a portfolio for his public speaking engagements, where he shares insights on mindset, overcoming adversity, and leadership.',
+    links: [{ name: 'Website', url: 'https://strevspeaks.com/', icon: <MonitorPlay size={18} /> }],
+    color: 'from-blue-500 to-cyan-600'
+  },
+  {
+    id: 'goingsteddy',
+    title: 'Going Steddy',
+    subtitle: 'Values-Based Dating',
+    description: 'Going Steddy is a values-based dating application that prioritizes meaningful connections over the superficial "swipe culture" typical of modern dating platforms. The app and its corresponding social media channels emphasize high-intent dating, encouraging users to lead with their core values.',
+    links: [
+      { name: 'Website', url: 'https://goingsteddy.com/', icon: <MonitorPlay size={18} /> },
+      { name: 'Instagram', url: 'https://www.instagram.com/goingsteddy.app/', icon: <Instagram size={18} /> },
+      { name: 'Apple App Store', url: 'https://apps.apple.com/us/app/going-steddy/id6756859521', icon: <Smartphone size={18} /> }
+    ],
+    color: 'from-pink-500 to-rose-600'
+  },
+  {
+    id: 'groundup',
+    title: 'Ground Up QB Training',
+    subtitle: 'Quarterback Development',
+    description: 'This venture is the physical and digital home for Chris’s specialized quarterback development program, focusing on the technical mechanics and mental "Football IQ" required for the position. The platform offers everything from in-person camps to a robust virtual training experience.',
+    links: [
+      { name: 'Website', url: 'https://groundupqb.com/', icon: <MonitorPlay size={18} /> },
+      { name: 'Apple App Store', url: 'https://apps.apple.com/us/app/ground-up-qb/id6746732431', icon: <Smartphone size={18} /> }
+    ],
+    color: 'from-green-500 to-emerald-600'
+  }
+];
+
+const SOCIALS = [
+  { name: 'Instagram', url: 'https://www.instagram.com/cstrevy5/', icon: <Instagram size={24} /> },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/chris-streveler-104449a8', icon: <Linkedin size={24} /> },
+  { name: 'Pro Athlete Community', url: 'https://proathletecommunity.com/player/chris-streveler/', icon: <UserCircle size={24} /> }
+];
+
+const BEAT = 0.5;
+const HALF_BEAT = 0.25;
+
+// --- COMPONENTS ---
+
+const ReactionGame = () => {
+  const [gameState, setGameState] = useState('idle');
+  const [message, setMessage] = useState('TEST YOUR REACTION');
+  const [score, setScore] = useState(null);
+  const [bestScore, setBestScore] = useState(null);
+  const timeoutRef = useRef(null);
+  const startTimeRef = useRef(null);
+
+  const handleClick = () => {
+    if (gameState === 'idle' || gameState === 'result') {
+      setGameState('waiting');
+      setMessage('WAIT FOR THE SNAP...');
+      const randomDelay = Math.floor(Math.random() * 3000) + 1000;
+      timeoutRef.current = setTimeout(() => {
+        setGameState('ready');
+        setMessage('SNAP! CLICK NOW!');
+        startTimeRef.current = Date.now();
+      }, randomDelay);
+    } else if (gameState === 'waiting') {
+      clearTimeout(timeoutRef.current);
+      setGameState('result');
+      setMessage('FALSE START!');
+    } else if (gameState === 'ready') {
+      const reactionTime = Date.now() - startTimeRef.current;
+      setScore(reactionTime);
+      if (!bestScore || reactionTime < bestScore) setBestScore(reactionTime);
+      setGameState('result');
+      setMessage(`${reactionTime}ms`);
+    }
+  };
+
+  return (
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 shadow-2xl w-full max-w-md mx-auto text-center">
+      <div className="flex items-center justify-center gap-2 mb-6 text-orange-500">
+        <Zap size={24} className="animate-pulse" />
+        <h3 className="text-2xl font-black uppercase tracking-tighter italic">The QB Snap Test</h3>
+      </div>
+      
+      <motion.div
+        onClick={handleClick}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className={`h-48 rounded-2xl flex items-center justify-center cursor-pointer transition-all duration-300 ${ 
+          gameState === 'idle' ? 'bg-zinc-800 hover:bg-zinc-700' : 
+          gameState === 'waiting' ? 'bg-red-900/40 border-2 border-red-500/50' : 
+          gameState === 'ready' ? 'bg-orange-500 shadow-[0_0_40px_rgba(249,115,22,0.4)]' : 'bg-zinc-800' 
+        }`}
+      >
+        <span className={`text-4xl font-black uppercase tracking-tighter ${gameState === 'ready' ? 'text-white' : 'text-zinc-300'}`}>
+          {message}
+        </span>
+      </motion.div>
+
+      {bestScore && (
+        <div className="mt-8 flex justify-between items-center px-4">
+          <div className="text-left">
+            <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Last Performance</p>
+            <p className="text-xl font-black text-zinc-300">{score ? `${score}ms` : '-'}</p>
+          </div>
+          <div className="text-right">
+            <p className="text-[10px] text-orange-500/70 font-bold uppercase tracking-widest">Personal Best</p>
+            <p className="text-xl font-black text-orange-500">{bestScore}ms</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const Section = ({ children, delay = 0 }) => {
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (inView) controls.start("visible");
+  }, [controls, inView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] } }
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+// --- MAIN APP ---
+export default function App() {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [showPortfolio, setShowPortfolio] = useState(false);
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current || isFlipped) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    setMousePos({ x, y });
+  };
+
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
+    if (!showPortfolio) {
+      setTimeout(() => setShowPortfolio(true), 600);
+    }
+  };
+
+  const tiltX = (mousePos.y / 15).toFixed(2);
+  const tiltY = -(mousePos.x / 15).toFixed(2);
+
+  return (
+    <div className="min-h-screen bg-black text-white font-sans selection:bg-orange-500 selection:text-white overflow-x-hidden">
+      <style>{`
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+      `}</style>
+
+      {/* HERO SECTION */}
+      <section className="relative h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-600/10 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="relative z-10 w-full max-w-[400px] perspective-1000">
+          <motion.div
+            ref={cardRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={() => setMousePos({ x: 0, y: 0 })}
+            onClick={handleFlip}
+            animate={{
+              rotateX: isFlipped ? 0 : tiltX,
+              rotateY: isFlipped ? 180 : tiltY,
+            }}
+            transition={{ type: "spring", stiffness: 200, damping: 25 }}
+            className="w-full aspect-[4/6] relative transform-style-3d cursor-pointer"
+          >
+            {/* FRONT */}
+            <div 
+              className="absolute inset-0 backface-hidden rounded-[2.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] border border-zinc-700/30 flex flex-col justify-between p-10"
+              style={{ background: 'linear-gradient(145deg, #18181b 0%, #09090b 100%)' }}
+            >
+              <div className="flex justify-between items-start">
+                <div className="w-12 h-12 rounded-full border border-zinc-700 flex items-center justify-center bg-zinc-800/50 backdrop-blur">
+                  <Target size={20} className="text-orange-500" />
+                </div>
+                <div className="text-right">
+                  <p className="text-[10px] font-black text-zinc-500 tracking-[0.2em] uppercase">Auth Code</p>
+                  <p className="text-xs text-zinc-400 font-mono">STRV-005</p>
+                </div>
+              </div>
+
+              <div>
+                <motion.h1 
+                  layoutId="name"
+                  className="text-6xl font-black uppercase tracking-tighter leading-[0.85]"
+                >
+                  Chris<br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-500">Streveler</span>
+                </motion.h1>
+                <div className="mt-4 flex items-center gap-2">
+                  <div className="h-px w-8 bg-orange-500" />
+                  <p className="text-sm font-bold text-orange-500 uppercase tracking-widest">Quarterback // Founder</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 text-zinc-600">
+                <PlayCircle size={18} />
+                <span className="uppercase tracking-[0.3em] font-black text-[10px]">Tap to access</span>
+              </div>
+            </div>
+
+            {/* BACK */}
+            <div 
+              className="absolute inset-0 backface-hidden rounded-[2.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] border border-orange-500/20 p-10 flex flex-col items-center justify-center gap-10"
+              style={{ transform: 'rotateY(180deg)', background: 'radial-gradient(circle at center, #111 0%, #000 100%)' }}
+            >
+              <div className="text-center space-y-2">
+                <h2 className="text-3xl font-black uppercase tracking-tighter">Routing Hub</h2>
+                <div className="h-1 w-12 bg-orange-500 mx-auto" />
+              </div>
+
+              <a 
+                href="https://cal.com/ChrisStreveler" 
+                target="_blank"
+                className="w-full aspect-square bg-white rounded-3xl p-4 flex flex-col items-center justify-center relative group overflow-hidden"
+              >
+                <div className="w-full h-full border-[6px] border-black relative">
+                  <div className="absolute top-2 left-2 w-10 h-10 border-4 border-black" />
+                  <div className="absolute top-2 right-2 w-10 h-10 border-4 border-black" />
+                  <div className="absolute bottom-2 left-2 w-10 h-10 border-4 border-black" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-black font-black text-4xl italic tracking-tighter">CAL.COM</span>
+                  </div>
+                </div>
+                <div className="absolute inset-0 bg-orange-500 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                  <span className="text-white font-black text-lg uppercase tracking-widest">Connect Now</span>
+                </div>
+              </a>
+
+              <div className="flex gap-8">
+                {SOCIALS.map((social, i) => (
+                  <a key={i} href={social.url} className="text-zinc-500 hover:text-white transition-colors">{social.icon}</a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        <AnimatePresence>
+          {showPortfolio && (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute bottom-12 flex flex-col items-center gap-3 text-zinc-500"
+            >
+              <span className="text-[10px] font-black uppercase tracking-[0.4em]">Scroll Explore</span>
+              <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
+                <ChevronDown size={24} className="text-orange-500" />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </section>
+
+      {/* CONTENT SECTION */}
+      {showPortfolio && (
+        <div className="max-w-6xl mx-auto px-6 py-24 space-y-40">
+          <Section>
+            <div className="max-w-2xl mx-auto text-center space-y-8">
+              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none italic">
+                Digital <span className="text-orange-500">Infrastructure</span>
+              </h2>
+              <p className="text-lg md:text-xl text-zinc-400 font-medium leading-relaxed">
+                This is the definitive directory for 2026. Every active venture, from performance training to leadership consulting, managed through a single master link.
+              </p>
+            </div>
+          </Section>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            {VENTURES.map((v, i) => (
+              <Section key={v.id} delay={i * 0.1}>
+                <div className="group relative h-full">
+                  <div className={`absolute -inset-4 bg-gradient-to-br ${v.color} opacity-0 group-hover:opacity-10 transition-opacity duration-700 blur-3xl`} />
+                  <div className="relative bg-zinc-900 border border-zinc-800 p-10 rounded-[2rem] h-full flex flex-col hover:border-zinc-700 transition-colors">
+                    <div className="mb-8">
+                      <h3 className="text-4xl font-black uppercase tracking-tighter italic mb-2">{v.title}</h3>
+                      <span className={`text-xs font-black uppercase tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r ${v.color}`}>
+                        {v.subtitle}
+                      </span>
+                    </div>
+                    
+                    <p className="text-zinc-400 leading-relaxed mb-10 flex-grow text-lg">
+                      {v.description}
+                    </p>
+
+                    <div className="grid grid-cols-1 gap-4">
+                      {v.links.map((link, j) => (
+                        <a
+                          key={j}
+                          href={link.url}
+                          target="_blank"
+                          className="flex items-center justify-between p-5 bg-black border border-zinc-800 rounded-2xl hover:border-white transition-all group/link"
+                        >
+                          <div className="flex items-center gap-4">
+                            <span className="text-orange-500">{link.icon}</span>
+                            <span className="font-bold uppercase tracking-widest text-sm">{link.name}</span>
+                          </div>
+                          <ChevronDown size={18} className="-rotate-90 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Section>
+            ))}
+          </div>
+
+          <Section>
+            <div className="py-20 border-y border-zinc-800">
+              <div className="text-center mb-16">
+                <h2 className="text-5xl font-black uppercase tracking-tighter italic mb-4">Mental Performance</h2>
+                <p className="text-zinc-500 tracking-widest uppercase font-bold text-sm">Test your reaction speed. No false starts.</p>
+              </div>
+              <ReactionGame />
+            </div>
+          </Section>
+
+          <Section>
+            <div className="bg-orange-500 rounded-[3rem] p-12 md:p-20 text-black relative overflow-hidden shadow-[0_0_80px_rgba(249,115,22,0.2)]">
+              <div className="absolute right-0 top-0 opacity-10 pointer-events-none translate-x-1/4 -translate-y-1/4">
+                <UserCircle size={600} strokeWidth={1} />
+              </div>
+              <div className="relative z-10 max-w-2xl">
+                <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] mb-8 italic">
+                  Professional<br />Identity
+                </h2>
+                <p className="text-xl font-bold leading-relaxed mb-12">
+                  Chris's digital presence documents the transition from high-level athletics to high-intent entrepreneurship. Connect with him through the channels below.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  {SOCIALS.map((s, i) => (
+                    <a
+                      key={i}
+                      href={s.url}
+                      target="_blank"
+                      className="flex items-center gap-3 bg-black text-white px-8 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform"
+                    >
+                      {s.icon}
+                      {s.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Section>
+
+          <footer className="py-12 text-center text-zinc-600">
+            <p className="text-[10px] font-black uppercase tracking-[0.5em]">Chris Streveler // 2026 // Built for High Performance</p>
+          </footer>
+        </div>
+      )}
+    </div>
+  );
+}

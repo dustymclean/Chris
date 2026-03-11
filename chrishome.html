@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Strev Speaks | Master Brand Architecture | Leadership Under Pressure</title>
+    
+    <meta name="description" content="Chris Streveler keynote speaker delivering leadership systems forged in elite professional sports environments.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .selection-blue { @apply selection:bg-blue-600 selection:text-white; }
+            .glow-blue { text-shadow: 0 0 20px rgba(37, 99, 235, 0.7), 0 0 40px rgba(37, 99, 235, 0.3); }
+            .one-sheet-shadow { box-shadow: 0 0 80px -20px rgba(37, 99, 235, 0.3); }
+            .audit-container { @apply w-full relative px-5 md:px-10 max-w-screen-2xl mx-auto; }
+            .audit-breakout { width: 100% !important; position: relative; margin-left: 0 !important; margin-right: 0 !important; }
+            .h-cinematic { font-size: clamp(40px, 9vw, 148px); line-height: 0.83; font-family: 'Barlow Condensed', sans-serif; }
+            .fancy-intro { @apply text-blue-600 font-bold uppercase tracking-[0.3em] italic; font-size: clamp(9px, 1vw, 13px); font-family: 'Barlow Condensed', sans-serif; }
+            .faq-content { overflow: hidden; max-height: 0; transition: max-height .4s ease; }
+            .faq-content.open { max-height: 600px; }
+            .condensed { font-family: 'Barlow Condensed', sans-serif; }
+        }
+
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow-x: hidden;
+            width: 100%;
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Barlow', sans-serif;
+        }
+
+        .photo-frame { @apply aspect-[3/4] bg-slate-100 rounded-t-[3rem] border-t-2 border-x-2 border-white/60 overflow-hidden shadow-2xl relative; }
+        .photo-frame img { @apply w-full h-full object-cover object-top grayscale transition-all duration-700; }
+        .photo-frame:hover img { @apply grayscale-0 scale-[1.03]; }
+
+        .audit-card {
+            @apply bg-white border border-slate-200 rounded-[2rem] px-6 py-6 shadow-xl;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .audit-card:hover { @apply -translate-y-2 border-blue-600 shadow-blue-600/15; }
+
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        @media print {
+            .landing-page-view, .no-print { display: none !important; }
+            .one-sheet-view { display: block !important; background: white !important; width: 100% !important; padding: 0 !important; }
+            .one-sheet-view main { border: none !important; box-shadow: none !important; border-radius: 0 !important; width: 100% !important; max-width: none !important; }
+            .one-sheet-view .bg-blue-600 { background: #2563eb !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .one-sheet-view .bg-slate-950 { background: #020617 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .page-break { page-break-before: always; margin-top: 2rem; border-top: 1px solid #eee; }
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 selection-blue w-full">
+
+<div id="landingPage" class="landing-page-view w-full overflow-x-hidden">
+
+    <section class="relative w-full border-b border-slate-200 bg-white overflow-hidden pt-10 md:pt-16">
+        <div class="absolute top-0 right-0 w-[55%] h-full bg-gradient-to-bl from-blue-50 via-transparent to-transparent pointer-events-none"></div>
+        <div class="audit-container grid lg:grid-cols-12 gap-10 items-end">
+            <div class="lg:col-span-7 relative z-10 text-left pb-10">
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="h-px w-10 bg-blue-600"></div>
+                    <span class="fancy-intro">STATUS: ACTIVE / GLOBAL ARCHITECTURE</span>
+                </div>
+                <h1 class="h-cinematic font-black tracking-tighter mb-8 italic uppercase text-slate-950 hover:glow-blue transition-all duration-500">
+                    LEADERSHIP <br>UNDER<br>
+                    <span class="text-blue-600 underline decoration-slate-200 decoration-[10px] md:decoration-[18px] underline-offset-[6px] md:underline-offset-[20px]">PRESSURE.</span>
+                </h1>
+                <p class="text-lg md:text-2xl text-slate-500 max-w-xl leading-snug font-medium mb-10">
+                    Chris Streveler installs the technical frameworks required to lead when the primary plan fails. He translates high-stakes pressure into actionable business logic.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                    <button onclick="toggleSheet(true)" class="condensed inline-flex items-center justify-center gap-3 bg-blue-600 px-9 py-5 md:px-10 md:py-5 rounded-full font-black text-white shadow-2xl hover:bg-slate-950 active:scale-95 transition-all leading-none text-lg md:text-xl uppercase italic">
+                        <i data-lucide="file-text" class="w-5 h-5"></i> VIEW MASTER KIT
+                    </button>
+                    <a href="mailto:Chris.streveler@gmail.com" class="condensed inline-flex items-center justify-center gap-3 border-2 border-slate-200 px-9 py-5 md:px-10 md:py-5 rounded-full font-black text-slate-600 hover:border-blue-600 hover:text-blue-600 transition-all bg-white shadow-lg leading-none text-lg md:text-xl uppercase italic">
+                        <i data-lucide="mail" class="w-5 h-5 text-blue-600"></i> PROCURE SYSTEM
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="https://www.instagram.com/cstrevy5/" target="_blank" class="p-3 rounded-full bg-slate-50 text-slate-400 hover:text-blue-600 border border-slate-200 transition-all"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="https://www.linkedin.com/in/chris-streveler/" target="_blank" class="p-3 rounded-full bg-slate-50 text-slate-400 hover:text-blue-600 border border-slate-200 transition-all"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <span class="text-[9px] text-slate-400 uppercase tracking-widest font-bold ml-2">Proven in the NFL, CFL, and Executive Boardrooms.</span>
+                </div>
+            </div>
+            <div class="lg:col-span-5 relative z-10 self-end">
+                <div class="photo-frame group">
+                    <img src="https://i.ibb.co/1f90Pszr/Screenshot-2026-03-07-at-8-06-00-AM.png" alt="Chris Streveler">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="w-full bg-slate-950 border-b border-slate-800 py-10">
+        <div class="audit-container">
+            <p class="condensed text-[8px] font-black text-slate-500 uppercase tracking-[0.7em] mb-8 italic text-center">Proven Authority Track</p>
+            <div class="flex flex-col md:flex-row justify-center gap-10 md:gap-24 items-center">
+                <div class="text-center group leading-none">
+                    <span class="condensed block text-white text-xl md:text-2xl font-black italic uppercase group-hover:text-blue-400 transition-all">WINNIPEG BLUE BOMBERS</span>
+                    <span class="condensed text-[8px] text-blue-500 font-black uppercase italic mt-3 tracking-[0.5em] block">GREY CUP CHAMPION</span>
+                </div>
+                <div class="hidden md:block h-8 w-px bg-slate-700"></div>
+                <div class="text-center group leading-none">
+                    <span class="condensed block text-white text-xl md:text-2xl font-black italic uppercase group-hover:text-blue-400 transition-all">AZ CARDINALS // NY JETS</span>
+                    <span class="condensed text-[8px] text-blue-500 font-black uppercase italic mt-3 tracking-[0.5em] block">VESTED NFL VETERAN</span>
+                </div>
+                <div class="hidden md:block h-8 w-px bg-slate-700"></div>
+                <div class="text-center group leading-none">
+                    <span class="condensed block text-white text-xl md:text-2xl font-black italic uppercase group-hover:text-blue-400 transition-all">10+ YEAR PRO QB</span>
+                    <span class="condensed text-[8px] text-blue-500 font-black uppercase italic mt-3 tracking-[0.5em] block">THE QUARTERBACK STANDARD</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="w-full py-16 border-b border-slate-100 bg-white fade-up">
+        <div class="audit-container grid lg:grid-cols-2 gap-16 lg:gap-28 items-center">
+            <div class="space-y-8">
+                <h2 class="condensed text-5xl md:text-7xl font-black italic uppercase tracking-tighter leading-none text-slate-950">
+                    BEYOND THE <span class="text-blue-600">NAME</span>.<br>THE SYSTEM.
+                </h2>
+                <p class="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
+                    Chris translates visceral huddle pressure into actionable business logic. He brings the technical systems that drive elite performance when the primary plan fails.
+                </p>
+                <blockquote class="border-l-[7px] border-blue-600 pl-8 py-5 italic text-slate-950 text-xl md:text-2xl font-bold bg-slate-50 rounded-r-3xl shadow-sm">
+                    "Chris is the one you hire to ensure your team can lead when the primary plan glitches and everything goes wrong."
+                </blockquote>
+            </div>
+            <div class="grid gap-5">
+                <div class="audit-card">
+                    <div class="flex items-center gap-4 mb-3 text-blue-600"><i data-lucide="database" class="w-5 h-5"></i><h4 class="condensed text-xl font-black italic uppercase tracking-widest">SYSTEM RIGIDITY</h4></div>
+                    <p class="text-slate-600 text-base leading-relaxed font-medium">His Adversity Framework provides a diagnostic tool for your culture, built on extreme ownership and rapid pivoting.</p>
+                </div>
+                <div class="audit-card">
+                    <div class="flex items-center gap-4 mb-3 text-blue-600"><i data-lucide="shield-check" class="w-5 h-5"></i><h4 class="condensed text-xl font-black italic uppercase tracking-widest">TACTICAL RESILIENCE</h4></div>
+                    <p class="text-slate-600 text-base leading-relaxed font-medium">Functional consistency under fire. Chris teaches teams how to maintain elite execution regardless of external scoreboard volatility.</p>
+                </div>
+                <div class="audit-card">
+                    <div class="flex items-center gap-4 mb-3 text-blue-600"><i data-lucide="users" class="w-5 h-5"></i><h4 class="condensed text-xl font-black italic uppercase tracking-widest">BESPOKE DIAGNOSTICS</h4></div>
+                    <p class="text-slate-600 text-base leading-relaxed font-medium">Expect total transparency. We execute pre-event discovery deep-dives to sniff out your specific industry hurdles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full py-16 bg-slate-50 border-b border-slate-100 fade-up">
+        <div class="audit-container">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px w-10 bg-blue-600"></div>
+                <span class="fancy-intro">Technical Keynote Modules</span>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="audit-card bg-white">
+                    <span class="condensed text-blue-600 font-black text-[9px] uppercase tracking-widest block mb-2">MOD-01</span>
+                    <h4 class="condensed text-xl font-black italic uppercase text-slate-950 mb-3">STRATEGIC OPTIONALITY</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed font-medium">Navigating organizational shifts using "Check" and "Can" logic to pivot mid-play.</p>
+                </div>
+                <div class="audit-card bg-white">
+                    <span class="condensed text-blue-600 font-black text-[9px] uppercase tracking-widest block mb-2">MOD-02</span>
+                    <h4 class="condensed text-xl font-black italic uppercase text-slate-950 mb-3">THE INVISIBLE CAMERA</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed font-medium">Establishing Reputational Integrity by acting as if a 24/7 audit is broadcasted.</p>
+                </div>
+                <div class="audit-card bg-white">
+                    <span class="condensed text-blue-600 font-black text-[9px] uppercase tracking-widest block mb-2">MOD-03</span>
+                    <h4 class="condensed text-xl font-black italic uppercase text-slate-950 mb-3">THE PUNT PROTECTOR</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed font-medium">The Value-Add Mindset: Becoming too useful to ignore by detaching ego.</p>
+                </div>
+                <div class="audit-card bg-white">
+                    <span class="condensed text-blue-600 font-black text-[9px] uppercase tracking-widest block mb-2">MOD-04</span>
+                    <h4 class="condensed text-xl font-black italic uppercase text-slate-950 mb-3">MANUFACTURING CONFIDENCE</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed font-medium">Confidence is the empirical result of a verified "Monday to Sunday" process.</p>
+                </div>
+                <div class="audit-card bg-white">
+                    <span class="condensed text-blue-600 font-black text-[9px] uppercase tracking-widest block mb-2">MOD-05</span>
+                    <h4 class="condensed text-xl font-black italic uppercase text-slate-950 mb-3">COGNITIVE LOAD REDUCTION</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed font-medium">Isolating the "Key Defender" in high-stakes environments to simplify decision loops.</p>
+                </div>
+                <div class="audit-card bg-white">
+                    <span class="condensed text-blue-600 font-black text-[9px] uppercase tracking-widest block mb-2">MOD-06</span>
+                    <h4 class="condensed text-xl font-black italic uppercase text-slate-950 mb-3">ASYMMETRIC READINESS</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed font-medium">Staying mentally ready "in the lab" when cameras are off to seize opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full py-16 bg-white border-b border-slate-100 fade-up">
+        <div class="audit-container" style="max-width: 56rem;">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px w-10 bg-blue-600"></div>
+                <span class="fancy-intro">Technical Inquiry (Playbook)</span>
+            </div>
+            <div class="space-y-0">
+                <div class="border-b border-slate-200 py-6 group">
+                    <button class="faq-toggle w-full flex justify-between items-center text-left condensed text-2xl font-black italic uppercase text-slate-950 hover:text-blue-600 transition-colors">
+                        <span>WHAT IS THE "QUARTERBACK STANDARD"?</span>
+                        <i data-lucide="plus" class="w-6 h-6 text-blue-600 transition-transform shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content text-base text-slate-500 font-medium mt-0 leading-relaxed">
+                        <p class="pt-5">It is a technical operating system for leadership forged in elite professional sports. It moves organizations from "nonchalant" cultures to intentional energy usage that raises the floor of team output.</p>
+                    </div>
+                </div>
+                <div class="border-b border-slate-200 py-6 group">
+                    <button class="faq-toggle w-full flex justify-between items-center text-left condensed text-2xl font-black italic uppercase text-slate-950 hover:text-blue-600 transition-colors">
+                        <span>ARE THE PROGRAMS CUSTOMIZED?</span>
+                        <i data-lucide="plus" class="w-6 h-6 text-blue-600 transition-transform shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content text-base text-slate-500 font-medium mt-0 leading-relaxed">
+                        <p class="pt-5">Yes. Every installation begins with a "Bespoke Diagnostic" discovery deep-dive to isolate the "Key Defender" in your industry.</p>
+                    </div>
+                </div>
+                <div class="border-b border-slate-200 py-6 group">
+                    <button class="faq-toggle w-full flex justify-between items-center text-left condensed text-2xl font-black italic uppercase text-slate-950 hover:text-blue-600 transition-colors">
+                        <span>WHAT ARE THE STAGE REQUIREMENTS?</span>
+                        <i data-lucide="plus" class="w-6 h-6 text-blue-600 transition-transform shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content text-base text-slate-500 font-medium mt-0 leading-relaxed">
+                        <p class="pt-5">Chris requires no podium. He utilizes physical whiteboards or digital displays for real-time schematic breakdowns and film cutups.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div id="oneSheet" class="one-sheet-view hidden py-8 bg-slate-100 w-full min-h-screen">
+    <div class="w-full max-w-6xl mx-auto px-5 md:px-10 mb-6 flex justify-between items-center no-print">
+        <button onclick="toggleSheet(false)" class="condensed text-blue-600 font-black uppercase tracking-widest text-[10px] flex items-center gap-2 hover:text-slate-950 transition-all italic">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> Return to Site
+        </button>
+        <button onclick="window.print()" class="condensed bg-blue-600 text-white px-8 py-3 rounded-full font-black text-xs uppercase shadow-xl hover:bg-slate-950 active:scale-95 transition-all italic">
+            <i data-lucide="printer" class="w-4 h-4 mr-2 inline"></i> Export Master PDF
+        </button>
+    </div>
+
+    <main class="w-full max-w-6xl mx-auto bg-white border border-slate-200 overflow-hidden one-sheet-shadow relative">
+
+        <header class="px-8 md:px-16 py-10 border-b-[10px] border-blue-600 bg-slate-950 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full -mr-32 -mt-32 pointer-events-none"></div>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 relative z-10">
+                <div>
+                    <span class="condensed text-blue-500 font-black uppercase tracking-[0.45em] text-[10px] italic block mb-5 leading-none text-white">LEADERSHIP SYSTEMS & PERFORMANCE // MASTER PRESS FILE 2026</span>
+                    <h1 class="condensed text-6xl md:text-[80px] font-black italic uppercase tracking-tighter leading-none text-white">CHRIS<br><span class="text-blue-500">STREVELER</span></h1>
+                </div>
+                <div class="md:text-right text-white">
+                    <p class="text-slate-500 font-bold uppercase tracking-widest text-xs mb-2 font-bold">PROGRAM SERIES</p>
+                    <p class="condensed font-black italic uppercase text-4xl md:text-5xl tracking-tight leading-none">THE QUARTERBACK<br>STANDARD</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12">
+            <aside class="lg:col-span-4 px-8 py-8 bg-slate-50 border-r border-slate-100 space-y-10">
+                <div>
+                    <h3 class="condensed text-blue-600 font-black uppercase tracking-widest text-[12px] italic mb-5 border-b border-slate-200 pb-3">AUTHORITY AUDIT</h3>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4"><i data-lucide="trophy" class="w-6 h-6 text-blue-600 shrink-0 mt-0.5"></i><div><span class="condensed text-lg font-black italic uppercase block leading-none text-slate-950">GREY CUP CHAMPION</span><span class="text-[8px] text-slate-500 uppercase block mt-1.5 font-bold tracking-widest leading-none">Winnipeg Blue Bombers (CFL)</span></div></li>
+                        <li class="flex items-start gap-4"><i data-lucide="shield-check" class="w-6 h-6 text-blue-600 shrink-0 mt-0.5"></i><div><span class="condensed text-lg font-black italic uppercase block leading-none text-slate-950">NFL QB VETERAN</span><span class="text-[8px] text-slate-500 uppercase block mt-1.5 font-bold tracking-widest leading-none">AZ Cardinals / NY Jets</span></div></li>
+                        <li class="flex items-start gap-4"><i data-lucide="users" class="w-6 h-6 text-blue-600 shrink-0 mt-0.5"></i><div><span class="condensed text-lg font-black italic uppercase block leading-none text-slate-950">15K+ AUDIENCE</span><span class="text-[8px] text-slate-500 uppercase block mt-1.5 font-bold tracking-widest leading-none">Whiteboard Wednesday reach</span></div></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="condensed text-blue-600 font-black uppercase tracking-widest text-[12px] italic mb-5 border-b border-slate-200 pb-3">EXECUTIVE FAST-TRACK</h3>
+                    <ul class="space-y-4 condensed text-slate-950 font-black uppercase italic text-[11px] leading-tight">
+                        <li class="flex flex-col gap-1"><span>01. PROFESSIONAL ORIGINS</span><p class="text-[8px] text-slate-500 not-italic font-bold uppercase">Transition from grit to architecture.</p></li>
+                        <li class="flex flex-col gap-1"><span>02. CHAMPIONSHIP DATA</span><p class="text-[8px] text-slate-500 not-italic font-bold uppercase">10+ years of high-pressure decision logs.</p></li>
+                        <li class="flex flex-col gap-1"><span>03. THE LOGICAL EDGE</span><p class="text-[8px] text-slate-500 not-italic font-bold uppercase">Schematic logic for business friction.</p></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="condensed text-blue-600 font-black uppercase tracking-widest text-[12px] italic mb-5 border-b border-slate-200 pb-3">OPERATING AXIOMS</h3>
+                    <div class="space-y-4 condensed text-[11px] font-black italic uppercase text-slate-950 leading-tight">
+                        <p class="border-l-4 border-blue-600 pl-4">"BRING THE JUICE. LEADERSHIP IS ENERGY USAGE."</p>
+                        <p class="border-l-4 border-blue-600 pl-4">"CONFIDENCE IS A CHOICE YOU EARN."</p>
+                        <p class="border-l-4 border-blue-600 pl-4">"HARD WORK PAYS OFF IN UNEXPECTED CURRENCY."</p>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-slate-200">
+                    <span class="text-[8px] font-black text-slate-400 uppercase tracking-widest block mb-2">ARCHITECTURE BY</span>
+                    <a href="https://dusty.mynode.us.com" target="_blank" class="condensed text-blue-600 font-black italic uppercase text-sm hover:underline leading-none">DUSTY MCLEAN</a>
+                </div>
+            </aside>
+
+            <div class="lg:col-span-8 px-8 md:px-14 py-8 space-y-12 bg-white">
+
+                <section>
+                    <h2 class="condensed text-blue-600 font-black uppercase tracking-[0.45em] text-[12px] mb-4 italic leading-none">VALUE PROPOSITION</h2>
+                    <p class="condensed text-slate-950 font-black italic uppercase text-3xl md:text-4xl leading-none">
+                        THE SYSTEM DRIVES THE PERFORMANCE. HE REJECTS "NONCHALANT" FOR THE JUICE.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="condensed text-blue-600 font-black uppercase tracking-[0.45em] text-[12px] mb-4 italic border-b border-slate-100 pb-2">THE SYSTEM BLUEPRINT</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="condensed text-xl font-black italic uppercase text-slate-950 mb-2">SYSTEM RIGIDITY</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-medium uppercase italic">Adversity Framework diagnostic tool for extreme ownership and rapid pivoting.</p>
+                        </div>
+                        <div>
+                            <h4 class="condensed text-xl font-black italic uppercase text-slate-950 mb-2">TACTICAL RESILIENCE</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-medium uppercase italic">Maintaining elite execution regardless of external scoreboard volatility.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="condensed text-blue-600 font-black uppercase tracking-[0.45em] text-[12px] mb-4 italic">MASTER MODULE STACK</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="audit-card px-5 py-5 border-slate-100"><span class="condensed text-blue-600 font-black text-[9px] uppercase tracking-widest block mb-1">MOD-01</span><h4 class="condensed font-black italic uppercase text-lg mb-1 text-slate-950">STRATEGIC OPTIONALITY</h4><p class="text-slate-500 text-[10px] font-medium italic uppercase leading-tight">"Check/Can" logic for organizational pivots.</p></div>
+                        <div class="audit-card px-5 py-5 border-slate-100"><span class="condensed text-blue-600 font-black text-[9px] uppercase tracking-widest block mb-1">MOD-02</span><h4 class="condensed font-black italic uppercase text-lg mb-1 text-slate-950">THE INVISIBLE CAMERA</h4><p class="text-slate-500 text-[10px] font-medium italic uppercase leading-tight">Reputational Integrity: Private habits vs public excellence.</p></div>
+                        <div class="audit-card px-5 py-5 border-slate-100"><span class="condensed text-blue-600 font-black text-[9px] uppercase tracking-widest block mb-1">MOD-03</span><h4 class="condensed font-black italic uppercase text-lg mb-1 text-slate-950">THE PUNT PROTECTOR</h4><p class="text-slate-500 text-[10px] font-medium italic uppercase leading-tight">Value-Add Mindset: Becoming too useful to ignore.</p></div>
+                        <div class="audit-card px-5 py-5 border-slate-100"><span class="condensed text-blue-600 font-black text-[9px] uppercase tracking-widest block mb-1">MOD-04</span><h4 class="condensed font-black italic uppercase text-lg mb-1 text-slate-950">LOGIC OF CONFIDENCE</h4><p class="text-slate-500 text-[10px] font-medium italic uppercase leading-tight">Confidence as a verified Monday–Sunday process.</p></div>
+                    </div>
+                </section>
+
+                <section class="bg-blue-600 p-8 md:p-10 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-white/8 rounded-full -mr-20 -mt-20"></div>
+                    <h3 class="condensed font-black italic uppercase text-4xl mb-6 leading-none">THE 3 L'S FRAMEWORK</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div><span class="condensed block font-black uppercase text-2xl mb-1 italic">01. LOVE</span><p class="text-[10px] uppercase italic font-bold opacity-90">Internal fuel for the grind.</p></div>
+                        <div><span class="condensed block font-black uppercase text-2xl mb-1 italic">02. LIVE</span><p class="text-[10px] uppercase italic font-bold opacity-90">Integrity: The MJ Standard.</p></div>
+                        <div><span class="condensed block font-black uppercase text-2xl mb-1 italic">03. LEAD</span><p class="text-[10px] uppercase italic font-bold opacity-90">Intentional energy impact.</p></div>
+                    </div>
+                </section>
+
+                <section class="bg-slate-50 border border-slate-200 p-8 rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between gap-10">
+                    <div class="space-y-6 w-full md:w-auto">
+                        <div>
+                            <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-1.5 font-bold">CONNECTIVITY</span>
+                            <a href="mailto:Chris.streveler@gmail.com" class="condensed text-slate-950 font-black text-2xl md:text-3xl uppercase hover:text-blue-600 transition-all leading-none block">Chris.streveler@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="shrink-0 bg-white p-4 rounded-3xl border border-slate-200 shadow-xl text-center">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://cal.com/chrisstreveler" class="w-24 h-24" alt="QR"><p class="condensed text-[8px] text-slate-400 font-black uppercase mt-3 tracking-widest">SCAN TO BOOK</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-10 text-center text-[8px] text-slate-400 font-bold uppercase tracking-[0.6em] italic no-print pb-10">
+        MASTER BUILD 14.0 // ARCHITECTED BY DUSTY MCLEAN // MARCH 2026
+    </footer>
+</div>
+
+<script>
+    lucide.createIcons();
+    function toggleSheet(show) {
+        const landing = document.getElementById('landingPage');
+        const sheet = document.getElementById('oneSheet');
+        if (show) { landing.classList.add('hidden'); sheet.classList.remove('hidden'); }
+        else { landing.classList.remove('hidden'); sheet.classList.add('hidden'); }
+        window.scrollTo(0, 0);
+    }
+    document.querySelectorAll('.faq-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            const isOpen = content.classList.contains('open');
+            document.querySelectorAll('.faq-content').forEach(c => { c.classList.remove('open'); c.style.maxHeight = null; });
+            document.querySelectorAll('.faq-toggle i').forEach(i => { i.style.transform = 'rotate(0deg)'; });
+            if (!isOpen) { content.classList.add('open'); content.style.maxHeight = content.scrollHeight + 'px'; icon.style.transform = 'rotate(45deg)'; }
+        });
+    });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
